@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Violet's Medical Centre</title>
+<meta name="description" content="Violet's Medical Centre in Musuku, Kwabenya, Greater Accra. Open 24 hours, with specialist clinics, doctor-led aesthetics and occupational health services across Ghana.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: the reference homepage's section order and grid, dressed in the brochure palette (deep violet, lavender, warm paper, a touch of gold). Single light look by choice. */
+:root{
+  --violet:#2b1863;      /* brand ink, logo colour */
+  --violet-2:#3d2a86;    /* buttons, filled cards */
+  --lavender:#e7e0f6;    /* soft panels */
+  --lavender-2:#cfc2ee;  /* outlines on violet */
+  --paper:#f7f4ee;       /* section ground */
+  --white:#ffffff;
+  --gold:#b98f45;        /* accent, used sparingly */
+  --ink:#1d1733;         /* body text */
+  --muted:#5f5878;       /* secondary text */
+  --line:#d9d3e6;        /* hairlines */
+  --display:"Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --body:"Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --radius:14px;
+  --wrap:1200px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:100px}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--white)}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.025em}
+h2{font-size:clamp(1.9rem,3.6vw,2.9rem)}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.tag{display:inline-block;border:1px solid var(--violet-2);color:var(--violet-2);font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .6rem;border-radius:6px}
+.pill{display:inline-flex;align-items:center;gap:.9rem;border:1px solid var(--violet-2);border-radius:999px;padding:.35rem .35rem .35rem 1.3rem;text-decoration:none;color:var(--violet-2);font-weight:600;font-size:.9rem;background:transparent;transition:background .2s,color .2s}
+.pill .arrow{width:2.6rem;height:2.6rem;border-radius:50%;background:var(--violet-2);color:var(--white);display:grid;place-items:center;flex:none;transition:transform .2s}
+.pill:hover{background:var(--violet-2);color:var(--white)}
+.pill:hover .arrow{background:var(--white);color:var(--violet-2);transform:rotate(45deg)}
+.pill.light{border-color:var(--white);color:var(--white)}
+.pill.light .arrow{background:var(--white);color:var(--violet)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.arrow svg{width:16px;height:16px}
+
+/* Header */
+.site-head{position:fixed;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 12px);z-index:50}
+.nav{position:relative;display:flex;align-items:center;gap:16px;padding:8px 8px 8px 16px;border-radius:20px;background:linear-gradient(135deg,rgba(255,255,255,.34),rgba(231,224,246,.14));-webkit-backdrop-filter:blur(14px) saturate(190%);backdrop-filter:blur(14px) saturate(190%);border:1px solid rgba(255,255,255,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 1px rgba(43,24,99,.06),0 10px 34px rgba(43,24,99,.14)}
+.nav::before{content:"";position:absolute;inset:1px;border-radius:19px;background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,0) 50%);pointer-events:none}
+.nav>*{position:relative}
+.brand{flex:none;display:block}
+.brand img{height:38px;width:auto}
+.menu{display:flex;gap:28px;margin:0 auto;padding:0;list-style:none;font-size:.9rem;font-weight:500}
+.menu a{text-decoration:none;color:var(--ink)}
+.menu a:hover{color:var(--violet-2)}
+.cta{background:var(--violet-2);color:var(--white);text-decoration:none;font-weight:600;font-size:.88rem;padding:.85rem 1.2rem;border-radius:13px;flex:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+.cta:hover{background:var(--violet)}
+.burger{display:none;margin-left:auto;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.8);border-radius:10px;width:44px;height:44px;cursor:pointer;color:var(--violet)}
+.burger svg{width:22px;height:22px}
+
+/* Hero */
+.hero{padding-block:84px 0;background:var(--white)}
+.hero-box{position:relative;display:grid;grid-template-columns:1.05fr 1fr;min-height:620px}
+.hero-copy{padding:72px 0 72px;display:flex;flex-direction:column;gap:22px;position:relative;z-index:2;min-width:0}
+.hero-contacts{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:.95rem;color:var(--ink)}
+.hero-contacts span b{font-weight:600}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.8rem);font-weight:400;line-height:1.05;color:var(--violet)}
+.hero h1 em{color:var(--gold);font-weight:300;white-space:nowrap}
+.hero-copy p.lead{max-width:30rem;color:var(--muted);font-size:1.02rem}
+.hero-art{position:relative;min-height:420px}
+.hero-art .disc{position:absolute;width:min(520px,90%);aspect-ratio:1;border-radius:50%;background:var(--lavender);right:4%;top:6%}
+.hero-art img.doc{position:absolute;bottom:0;right:16%;height:96%;width:auto;max-width:none;object-fit:contain}
+.hero-cards{position:absolute;right:0;bottom:24px;display:grid;grid-template-columns:repeat(2,230px);gap:12px;z-index:3}
+.hcard{position:relative;border-radius:var(--radius);overflow:hidden;min-height:200px;padding:20px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;color:var(--white)}
+.hcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hcard::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,24,99,.15),rgba(43,24,99,.88));z-index:1}
+.hcard.alt::after{background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.96))}
+.hcard.alt{color:var(--violet)}
+.hcard>*{position:relative;z-index:2}
+.hcard h3{font-size:1.3rem;font-weight:500;line-height:1.2}
+.hcard small{display:block;font-size:.78rem;margin-top:6px;opacity:.9}
+.hcard .ring{width:38px;height:38px;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center}
+.hcard .ring svg{width:14px;height:14px}
+.hcard:hover .ring{background:currentColor}
+.hcard:hover .ring svg{color:var(--violet)}
+.hcard.alt:hover .ring svg{color:var(--white)}
+
+/* Insurers */
+.insurers{padding-block:44px 40px;border-bottom:1px solid var(--line)}
+.insurers .label{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;text-align:center;margin-bottom:22px}
+.logo-marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.logo-track{display:flex;align-items:center;width:max-content;animation:slide 38s linear infinite}
+.logo-marquee:hover .logo-track{animation-play-state:paused}
+.logo-track img{height:56px;width:auto;margin-right:72px;mix-blend-mode:multiply;flex:none}
+
+/* About */
+.about{padding-block:110px 70px}
+.about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;max-width:980px;margin:0 auto}
+.circle{aspect-ratio:1;border-radius:50%;overflow:hidden;max-width:380px;width:100%;justify-self:center}
+.circle img{width:100%;height:100%;object-fit:cover}
+.about-copy{display:flex;flex-direction:column;gap:20px;align-items:flex-start;min-width:0}
+.about-copy p{color:var(--muted);max-width:34rem}
+
+/* Marquee */
+.marquee{overflow:hidden;padding-block:10px 30px;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:60px;animation:slide 40s linear infinite;font-family:var(--display);font-weight:300;letter-spacing:-.03em;font-size:clamp(3rem,8vw,6rem);color:#ebe6f3;line-height:1}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* Stats */
+.stats{padding-block:40px 110px}
+.stats-grid{display:grid;grid-template-columns:repeat(3,200px) 340px;grid-template-rows:200px 200px;gap:10px;justify-content:center;align-items:center}
+.stat{border:1px solid var(--violet-2);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;justify-content:space-between;height:100%;color:var(--violet-2)}
+.stat p{font-size:.85rem;line-height:1.4}
+.stat strong{font-family:var(--display);font-weight:300;font-size:4.4rem;line-height:1;letter-spacing:-.04em}
+.stat.fill{background:var(--violet-2);color:var(--white)}
+.s1{grid-column:1;grid-row:1}
+.s2{grid-column:2;grid-row:1}
+.s-img{grid-column:2;grid-row:2;border-radius:var(--radius);overflow:hidden;height:100%}
+.s-img img{width:100%;height:100%;object-fit:cover}
+.s3{grid-column:3;grid-row:2}
+.s-circle{grid-column:4;grid-row:1 / span 2;aspect-ratio:1;border-radius:50%;overflow:hidden;margin-left:20px;position:relative}
+.s-circle img{width:100%;height:100%;object-fit:cover}
+
+/* Services list */
+.services{background:var(--paper);padding-block:100px}
+.services-inner{max-width:900px;margin:0 auto}
+.services h2{margin:18px 0 34px}
+.svc{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;border-top:1px solid var(--line);padding:22px 0;text-decoration:none;color:var(--ink);position:relative}
+.svc:last-of-type{border-bottom:1px solid var(--line)}
+.svc .num{align-self:start;font-size:.75rem;color:var(--muted);padding-top:10px;font-variant-numeric:tabular-nums}
+.svc .thumb{display:none}
+.svc h3{font-size:clamp(1.8rem,4vw,2.9rem);font-weight:400;transition:transform .25s}
+.svc p{font-size:.85rem;color:var(--muted);margin-top:6px}
+.svc .ring{width:44px;height:44px;border-radius:50%;border:1px solid var(--violet-2);color:var(--violet-2);display:grid;place-items:center;transition:background .2s,color .2s}
+.svc .ring svg{width:14px;height:14px}
+.svc-body{display:flex;align-items:center;gap:24px;min-width:0}
+.svc:hover .ring,.svc.open .ring{background:var(--violet-2);color:var(--white)}
+.svc:hover .thumb,.svc.open .thumb{display:block}
+.thumb{width:150px;height:100px;border-radius:10px;overflow:hidden;flex:none}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.services .pill{margin-top:34px}
+
+/* Values band */
+.values{display:grid;grid-template-columns:1.55fr 1fr;gap:0;min-height:420px}
+.values-img{position:relative;overflow:hidden}
+.values-img img{width:100%;height:100%;object-fit:cover}
+.values-cards{display:grid;grid-template-rows:repeat(3,1fr);gap:8px;padding:8px;background:var(--lavender)}
+.vcard{background:var(--white);border-radius:12px;padding:18px 22px;display:flex;flex-direction:column;justify-content:center;gap:4px;position:relative;overflow:hidden}
+.vcard .sym{font-family:var(--display);font-weight:300;font-size:2.4rem;line-height:1;letter-spacing:.02em;color:var(--violet)}
+.vcard .ico{position:absolute;top:18px;right:20px;width:46px;height:46px;color:var(--violet-2);z-index:1}
+.vcard.fill .ico{color:var(--white)}
+.vcard .sym sub{font-family:var(--body);font-size:.7rem;vertical-align:baseline;margin-left:4px;color:var(--gold);font-weight:600}
+.vcard h3{font-family:var(--body);font-size:1.05rem;font-weight:600;color:var(--ink)}
+.vcard p{font-size:.82rem;color:var(--muted)}
+.vcard.fill{background:var(--violet-2)}
+.vcard.fill .sym,.vcard.fill h3{color:var(--white)}
+.vcard.fill p{color:var(--lavender-2)}
+.vcard::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;border:1px dashed var(--line)}
+.vcard.fill::after{border-color:rgba(255,255,255,.25)}
+
+/* Clinics */
+.clinics{padding-block:110px}
+.clinics-grid{display:grid;grid-template-columns:240px 1fr 240px;gap:24px;align-items:center;max-width:1000px;margin:0 auto}
+.col{display:grid;gap:18px}
+.col.right{margin-top:80px}
+.ccard{border:1px solid var(--violet-2);border-radius:var(--radius);padding:18px;background:var(--white);text-align:center}
+.ccard h3{font-family:var(--body);font-size:1rem;font-weight:600;color:var(--ink)}
+.ccard .who{font-size:.75rem;color:var(--violet-2);margin-top:2px}
+.ccard ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:6px}
+.ccard li{display:flex;justify-content:space-between;font-size:.85rem;border-top:1px solid var(--line);padding-top:6px;font-variant-numeric:tabular-nums}
+.ccard li b{font-weight:600}
+.ccard.fill{background:var(--violet-2);color:var(--white)}
+.ccard.fill h3{color:var(--white)}
+.ccard.fill .who{color:var(--lavender-2)}
+.ccard.fill li{border-color:rgba(255,255,255,.2)}
+.clinic-center{aspect-ratio:1;border-radius:50%;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:40px;min-width:0}
+.clinic-center h2{font-size:clamp(1.6rem,2.8vw,2.2rem)}
+.clinic-center p{font-size:.85rem;color:var(--muted);max-width:18rem}
+
+/* Gallery */
+.gallery{padding-block:0 80px}
+.strip{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.strip::-webkit-scrollbar{display:none}
+.shot{margin:0;position:relative;flex:0 0 clamp(240px,24vw,320px);height:340px;border-radius:12px;overflow:hidden;scroll-snap-align:start}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.shot:hover img{transform:scale(1.04)}
+.shot figcaption{position:absolute;left:12px;right:12px;bottom:12px;background:rgba(43,24,99,.72);backdrop-filter:blur(6px);color:var(--white);border-radius:10px;padding:12px 14px;font-family:var(--display);font-weight:500;font-size:1.05rem;line-height:1.25}
+.shot figcaption span{display:inline-block;font-family:var(--body);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.6);border-radius:5px;padding:2px 6px;margin-bottom:6px}
+.strip-ctrl{display:flex;justify-content:center;gap:8px;margin-top:18px}
+.strip-ctrl button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--white);color:var(--violet-2);cursor:pointer;display:grid;place-items:center}
+.strip-ctrl button svg{width:16px;height:16px}
+
+/* Guides */
+.guides{background:var(--paper);padding-block:90px}
+.guides-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.guides-head h2{margin-top:14px;max-width:16ch}
+.guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.guide{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink);min-width:0}
+.guide .pic{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/10}
+.guide .pic img{width:100%;height:100%;object-fit:cover}
+.guide .pic .tag{position:absolute;left:10px;top:10px;background:var(--violet-2);color:var(--white);border-color:var(--violet-2)}
+.guide .meta{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.guide h3{font-family:var(--body);font-weight:600;font-size:1.1rem;line-height:1.3}
+.guide .more{font-size:.85rem;color:var(--violet-2);font-weight:600}
+.guide:hover h3{color:var(--violet-2)}
+
+/* Footer */
+.foot{background:var(--violet);color:var(--lavender-2);padding-block:56px 28px}
+.foot-top{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:24px}
+.foot-top img{height:52px;width:auto}
+.foot-top p{font-family:var(--display);font-weight:300;font-size:1.4rem;color:var(--white)}
+.foot-grid{display:grid;grid-template-columns:1.2fr 1.4fr 1fr;gap:40px;padding-block:32px}
+.foot h4{color:var(--white);font-size:.95rem;font-weight:600;margin:0 0 14px}
+.foot dl{margin:0;display:grid;gap:10px;font-size:.88rem}
+.foot dt{color:var(--white);display:inline;font-weight:600}
+.foot dd{display:inline;margin:0}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:.88rem}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--white)}
+.big-phone{display:flex;align-items:center;gap:10px;color:var(--white);font-size:1.4rem;font-weight:600;margin-top:16px;font-variant-numeric:tabular-nums}
+.socials{display:grid;gap:10px;font-size:.88rem}
+.socials div{display:flex;align-items:center;gap:10px}
+.socials svg{width:30px;height:30px;padding:7px;border-radius:8px;background:rgba(255,255,255,.12);color:var(--white);flex:none}
+.foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;border-top:1px solid rgba(255,255,255,.18);padding-top:20px}
+
+/* Responsive */
+@media (max-width:1080px){
+  .menu{gap:18px}
+  .hero-box{grid-template-columns:1fr;min-height:0}
+  .hero-copy{padding:40px 0 24px}
+  .hero-art{min-height:520px}
+  .hero-art img.doc{right:auto;left:8%;height:100%}
+  .hero-cards{right:0;bottom:16px}
+  .stats-grid{grid-template-columns:repeat(3,1fr);grid-template-rows:auto;max-width:640px;margin:0 auto}
+  .s-circle{display:none}
+  .stat{min-height:180px}
+  .s-img{min-height:180px}
+  .clinics-grid{grid-template-columns:1fr 1fr}
+  .clinic-center{grid-column:1 / -1;grid-row:1;aspect-ratio:auto;border-radius:24px;padding:40px 24px}
+  .col.right{margin-top:0}
+}
+@media (max-width:860px){
+  .menu,.site-head .cta{display:none}
+  .burger{display:grid;place-items:center}
+  .menu.show{display:flex;position:absolute;left:0;right:0;top:calc(100% + 8px);flex-direction:column;gap:0;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:0 10px 30px rgba(43,24,99,.12)}
+  .menu.show a{display:block;padding:12px 14px}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .values{grid-template-columns:1fr}
+  .values-img{height:280px}
+  .guide-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .hero-copy{padding:32px 0 16px}
+  .hero-art{min-height:0;display:flex;flex-direction:column}
+  .hero-art .disc{display:none}
+  .hero-art img.doc{position:static;height:360px;margin:0 auto}
+  .hero-cards{position:static;grid-template-columns:1fr 1fr;padding-top:12px}
+  .hcard{min-height:170px;padding:14px}
+  .hcard h3{font-size:1.1rem}
+  .logo-track img{height:42px;margin-right:48px}
+  .about{padding-block:70px 40px}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .s1,.s2,.s3,.s-img{grid-column:auto;grid-row:auto}
+  .stat strong{font-size:4rem}
+  .svc{grid-template-columns:auto 1fr}
+  .svc .ring{display:none}
+  .svc .thumb{display:none!important}
+  .clinics-grid{grid-template-columns:1fr}
+  .guide-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .marquee-track,.logo-track{animation:none}
+  .logo-marquee{overflow-x:auto}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap"><div class="nav">
+    <a class="brand" href="#top" aria-label="Violet's Medical Centre home"><img src="assets/logo.png" alt="Violet's Medical Centre"></a>
+    <ul class="menu" id="menu">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#clinics">Specialist Clinics</a></li>
+      <li><a href="#services">Aesthetics</a></li>
+      <li><a href="#services">Occupational Health</a></li>
+      <li><a href="#insurance">Insurance</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="cta" href="https://wa.me/233540599383" target="_blank" rel="noopener">Book an Appointment</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div></div>
+</header>
+
+<main id="top">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-box">
+        <div class="hero-copy">
+          <div class="hero-contacts">
+            <!-- <span>info@violetsmedical.com</span> -->
+            <!-- <span><b>WhatsApp</b> 054 059 9383</span> -->
+          </div>
+          <h1>Here for you, <em>day and night</em></h1>
+          <p class="lead">Open 24 hours in Musuku, Kwabenya, Violet's Medical Centre brings together specialist clinics, doctor-led aesthetic treatments and occupational health services for organisations across Ghana.</p>
+          <div><a class="pill" href="#about">About the centre <span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a></div>
+        </div>
+        <div class="hero-art">
+          <div class="disc" aria-hidden="true"></div>
+          <img class="doc" src="assets/oh-doctor.png" alt="Smiling clinician in scrubs with a stethoscope">
+          <div class="hero-cards">
+            <a class="hcard" href="#services">
+              <img src="assets/aes-portrait.jpg" alt="">
+              <div><h3>Aesthetics</h3><small>Skin, face, hair and body</small></div>
+              <span class="ring"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span>
+            </a>
+            <a class="hcard alt" href="#services">
+              <img src="assets/oh-lab.jpg" alt="">
+              <div><h3>Occupational Health</h3><small>Medicals, screening, workplace clinics</small></div>
+              <span class="ring"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Insurers -->
+  <section class="insurers" id="insurance" aria-label="Insurance providers we accept">
+    <div class="wrap">
+      <p class="label">Insurance we accept</p>
+      <div class="logo-marquee"><div class="logo-track">
+        <img src="assets/insurers/nhis.png" alt="NHIS">
+        <img src="assets/insurers/acacia.png" alt="Acacia Health Insurance">
+        <img src="assets/insurers/ace.png" alt="ACE Medical Insurance">
+        <img src="assets/insurers/rivia.png" alt="Rivia">
+        <img src="assets/insurers/apex.png" alt="Apex Health Insurance">
+        <img src="assets/insurers/cosmopolitan.png" alt="Cosmopolitan Health Insurance">
+        <img src="assets/insurers/glico.png" alt="Glico Healthcare">
+        <img src="assets/insurers/premier.png" alt="Premier Health Insurance">
+        <img src="assets/insurers/metropolitan.png" alt="Metropolitan Health Insurance">
+        <img src="assets/insurers/ghic.png" alt="GHIC">
+        <img src="assets/insurers/allianz.png" alt="Allianz">
+        <img src="assets/insurers/equity.png" alt="Equity Health Insurance">
+        <img src="assets/insurers/nhis.png" alt="">
+        <img src="assets/insurers/acacia.png" alt="">
+        <img src="assets/insurers/ace.png" alt="">
+        <img src="assets/insurers/rivia.png" alt="">
+        <img src="assets/insurers/apex.png" alt="">
+        <img src="assets/insurers/cosmopolitan.png" alt="">
+        <img src="assets/insurers/glico.png" alt="">
+        <img src="assets/insurers/premier.png" alt="">
+        <img src="assets/insurers/metropolitan.png" alt="">
+        <img src="assets/insurers/ghic.png" alt="">
+        <img src="assets/insurers/allianz.png" alt="">
+        <img src="assets/insurers/equity.png" alt="">
+      </div></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div class="circle"><img src="assets/oh-bp.jpg" alt="Clinician checking a patient's blood pressure"></div>
+      <div class="about-copy">
+        <span class="tag">Doctor-led care</span>
+        <h2>Personalised care in a professional healthcare setting</h2>
+        <p>Every treatment begins with a doctor-led consultation and assessment, so your plan is tailored to your needs and goals. Our occupational health services are led by qualified and experienced occupational health practitioners, with attention to safety, comfort, privacy and follow-up.</p>
+        <a class="pill" href="https://wa.me/233540599383" target="_blank" rel="noopener">WhatsApp 054 059 9383 <span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Open 24 hours.</span><span>Specialist clinics.</span><span>Aesthetics.</span><span>Occupational health.</span>
+      <span>Open 24 hours.</span><span>Specialist clinics.</span><span>Aesthetics.</span><span>Occupational health.</span>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <section class="stats" aria-label="The centre in numbers">
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat fill s1"><p>Hours a day we are open</p><strong>24</strong></div>
+        <div class="stat s2"><p>Specialist clinics running each week</p><strong>6</strong></div>
+        <div class="s-img"><img src="assets/oh-test.jpg" alt="Hand holding a screening test device"></div>
+        <div class="stat s3"><p>Insurance providers accepted, including NHIS</p><strong>12</strong></div>
+        <div class="s-circle"><img src="assets/aes-touch.jpg" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="wrap services-inner">
+      <span class="tag">Because your health matters</span>
+      <h2>Care for every need, under one roof</h2>
+      <a class="svc" href="#clinics">
+        <span class="num">01</span>
+        <div class="svc-body"><span class="thumb"><img src="assets/oh-bp.jpg" alt=""></span><div><h3>Specialist Clinics</h3><p>Pediatric, urology, obs and gynae, physician specialist, dietician, physiotherapy and pain</p></div></div>
+        <span class="ring"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span>
+      </a>
+      <a class="svc open" href="#guides">
+        <span class="num">02</span>
+        <div class="svc-body"><span class="thumb"><img src="assets/aes-lash.jpg" alt=""></span><div><h3>Aesthetics</h3><p>Microneedling, Botox, dermal fillers, acne, keloid, stretch mark and skin tag treatment, hair loss, mesotherapy</p></div></div>
+        <span class="ring"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span>
+      </a>
+      <a class="svc" href="#guides">
+        <span class="num">03</span>
+        <div class="svc-body"><span class="thumb"><img src="assets/oh-lab.jpg" alt=""></span><div><h3>Occupational Health</h3><p>Pre-employment and exit medicals, drug and alcohol screening, in-house and remote clinics</p></div></div>
+        <span class="ring"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span>
+      </a>
+      <a class="svc" href="#guides">
+        <span class="num">04</span>
+        <div class="svc-body"><span class="thumb"><img src="assets/oh-outreach.jpg" alt=""></span><div><h3>Workplace Wellness</h3><p>Corporate health screenings and talks, spirometry, audiometry, CSR in health</p></div></div>
+        <span class="ring"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span>
+      </a>
+      <a class="pill" href="#guides">View all services <span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="values" aria-label="Our approach">
+    <div class="values-img"><img src="assets/oh-clinic.jpg" alt="Clinic room with monitoring equipment"></div>
+    <div class="values-cards">
+      <div class="vcard"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3h2M12 3h2M5 3v5a4 4 0 0 0 8 0V3"/><path d="M9 12v3a5 5 0 0 0 10 0v-2"/><circle cx="19" cy="11" r="2"/></svg><span class="sym">DC</span><h3>Doctor-led consultations</h3><p>Every treatment starts with an assessment</p></div>
+      <div class="vcard"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6 1.2 0 2.3.3 3.2.9"/><path d="M17.5 21s-4-2.4-4-5.1a2.1 2.1 0 0 1 4-1 2.1 2.1 0 0 1 4 1c0 2.7-4 5.1-4 5.1z"/></svg><span class="sym">PC</span><h3>Personalised care</h3><p>Plans tailored to your needs and goals</p></div>
+      <div class="vcard fill"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M30.5 2.3L31.0 2.8L31.1 3.0L30.9 3.9L30.6 4.5L30.4 5.1L30.4 5.4L30.6 5.7L31.3 6.1L31.6 6.4L32.0 6.9L32.5 7.3L33.3 7.9L33.6 8.0L33.6 8.2L33.5 8.4L33.4 10.5L33.3 11.1L33.3 11.4L33.2 12.2L33.1 12.3L33.0 12.3L32.8 12.3L32.8 12.5L32.9 12.6L33.3 12.7L33.2 12.9L32.9 13.0L32.7 13.2L32.8 13.5L32.6 13.7L32.7 13.8L32.8 14.0L33.0 13.9L33.5 13.5L33.8 13.5L34.1 13.6L34.6 14.1L34.6 14.4L34.4 15.4L34.2 16.1L34.1 17.1L34.4 17.6L34.3 17.9L34.1 18.2L33.5 18.5L33.6 18.8L33.8 19.3L34.3 19.8L35.2 20.5L35.7 21.3L35.7 21.7L35.4 22.0L35.1 22.3L35.0 22.8L35.1 25.6L34.4 26.9L34.4 27.2L34.5 27.6L34.7 27.9L35.0 28.0L35.3 28.2L35.2 29.1L35.1 30.0L35.0 30.4L34.9 30.6L34.7 30.8L34.6 31.0L34.6 31.4L34.6 31.7L34.7 32.0L35.1 32.4L35.6 33.4L35.8 33.5L35.9 33.7L35.8 33.9L36.0 34.4L36.6 34.8L37.2 35.2L37.7 35.3L37.8 35.6L38.1 36.1L38.4 36.3L38.8 36.4L39.1 36.5L39.1 36.9L38.5 37.1L38.1 37.5L37.9 38.1L37.5 38.8L36.1 39.1L35.6 39.2L32.8 39.2L30.1 40.5L28.6 40.9L27.7 41.7L26.5 42.2L25.6 42.8L23.8 43.1L20.8 44.1L19.8 44.5L18.9 45.2L17.4 46.0L16.8 46.0L15.6 45.2L14.7 44.9L12.5 44.3L10.8 44.1L10.0 43.8L9.8 43.8L10.0 43.5L10.5 43.5L11.0 43.6L11.3 43.3L11.8 43.3L12.0 43.1L12.0 42.6L12.0 42.1L12.2 41.9L12.3 41.4L12.0 40.3L11.8 40.1L10.9 40.0L10.8 39.7L10.6 39.5L10.4 38.9L10.2 38.0L9.9 36.9L9.2 35.1L9.1 34.5L8.9 33.8L8.9 33.0L9.1 32.7L9.0 32.4L9.0 31.9L9.4 31.0L10.3 29.9L10.5 29.5L10.7 29.2L10.7 28.8L10.9 27.5L11.3 25.9L11.6 25.3L11.7 25.0L12.0 24.5L12.0 24.2L12.8 23.6L13.2 23.4L13.3 23.2L13.2 22.9L13.2 22.7L13.4 22.6L13.7 22.6L13.9 22.3L13.6 20.4L13.3 18.4L13.3 18.3L13.1 18.0L13.0 17.2L12.7 16.7L12.3 16.6L12.3 16.1L12.7 15.4L12.8 14.9L12.6 14.8L12.6 14.5L12.7 13.9L12.7 13.6L12.6 13.2L12.2 12.4L12.1 11.8L12.3 11.4L12.3 10.6L12.1 9.4L12.0 8.7L12.2 8.4L12.1 8.1L11.8 7.8L11.8 7.5L12.0 7.2L12.0 7.0L11.7 6.9L11.4 6.5L11.2 5.9L11.2 5.0L11.7 3.3L11.7 3.2L12.3 3.2L12.3 3.2L13.9 3.2L15.8 3.2L18.1 3.2L20.1 3.2L20.2 3.1L20.6 3.0L22.6 3.2L23.9 3.1L24.5 3.1L24.9 3.3L25.8 3.2L26.2 3.2L26.6 3.6L26.7 3.6L26.9 3.5L27.3 3.3L27.7 3.1L27.9 2.8L28.1 2.5L28.3 2.6L28.6 2.5L28.9 2.3L29.0 2.0L30.5 2.3Z"/></svg><span class="sym">NC</span><h3>Nationwide coverage</h3><p>At your workplace, a project site or through mobile teams</p></div>
+    </div>
+  </section>
+
+  <!-- Clinics -->
+  <section class="clinics" id="clinics">
+    <div class="wrap clinics-grid">
+      <div class="col left">
+        <div class="ccard"><h3>Pediatric</h3><p class="who">Children's clinic</p><ul><li><span>Monday</span><b>3 PM</b></li><li><span>Wednesday</span><b>3 PM</b></li><li><span>Saturday</span><b>9 AM</b></li></ul></div>
+        <div class="ccard"><h3>Obs &amp; Gynae</h3><p class="who">Women's health</p><ul><li><span>Tuesday</span><b>1 PM</b></li><li><span>Thursday</span><b>1 PM</b></li><li><span>Saturday</span><b>9 AM</b></li></ul></div>
+        <div class="ccard"><h3>Dietician</h3><p class="who">Nutrition</p><ul><li><span>Saturday</span><b>3 PM</b></li><li><span>Sunday</span><b>3 PM</b></li></ul></div>
+      </div>
+      <div class="clinic-center">
+        <span class="tag">Weekly timetable</span>
+        <h2>Specialist clinics you can plan around</h2>
+        <p>Times show when each clinic starts. General care is open 24 hours.</p>
+        <a class="pill" href="https://wa.me/233540599383" target="_blank" rel="noopener">Book a clinic <span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
+      </div>
+      <div class="col right">
+        <div class="ccard fill"><h3>Urology</h3><p class="who">Urinary and kidney health</p><ul><li><span>Monday</span><b>3 PM</b></li><li><span>Tuesday</span><b>3 PM</b></li><li><span>Saturday</span><b>12 PM</b></li></ul></div>
+        <div class="ccard"><h3>Physician Specialist</h3><p class="who">Adult medicine</p><ul><li><span>Sunday</span><b>3 PM</b></li></ul></div>
+        <div class="ccard"><h3>Physiotherapy / Pain</h3><p class="who">Movement and pain</p><ul><li><span>Tuesday</span><b>10 AM</b></li><li><span>Wednesday</span><b>10 AM</b></li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery" aria-label="Inside Violet's">
+    <div class="strip" id="strip">
+      <figure class="shot"><img src="assets/aes-cover.jpg" alt="Woman in profile with a long braid"><figcaption><span>Aesthetics</span><br>Enhance your natural beauty</figcaption></figure>
+      <figure class="shot"><img src="assets/oh-lab.jpg" alt="Lab worker in mask and goggles"><figcaption><span>Occupational health</span><br>Health surveillance</figcaption></figure>
+      <figure class="shot"><img src="assets/aes-blue.jpg" alt="Woman with curly hair against a blue background"><figcaption><span>Aesthetics</span><br>Skin rejuvenation</figcaption></figure>
+      <figure class="shot"><img src="assets/oh-outreach.jpg" alt="Health workers at an outreach clinic"><figcaption><span>Mobile and remote</span><br>Off-site clinics</figcaption></figure>
+      <figure class="shot"><img src="assets/aes-braids.jpg" alt="Black and white portrait with braids"><figcaption><span>Aesthetics</span><br>Hair restoration</figcaption></figure>
+      <figure class="shot"><img src="assets/oh-team.jpg" alt="Team unloading supplies from a vehicle"><figcaption><span>Partnerships</span><br>CSR in health</figcaption></figure>
+      <figure class="shot"><img src="assets/aes-jacket.jpg" alt="Woman with an afro in a pinstripe jacket"><figcaption><span>Aesthetics</span><br>Skin health</figcaption></figure>
+    </div>
+    <div class="strip-ctrl">
+      <button type="button" id="prev" aria-label="Previous photos"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3 5 8l5 5"/></svg></button>
+      <button type="button" id="next" aria-label="Next photos"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 3 5 5-5 5"/></svg></button>
+    </div>
+  </section>
+
+  <!-- Guides -->
+  <section class="guides" id="guides">
+    <div class="wrap">
+      <div class="guides-head">
+        <div><span class="tag">Service guides</span><h2>Everything we offer, in detail</h2></div>
+        <a class="pill" href="#contact">Ask us a question <span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
+      </div>
+      <div class="guide-grid">
+        <a class="guide" href="assets/guides/Violets_Aesthetics_Brochure_A4_DIGITAL.pdf" target="_blank" rel="noopener">
+          <div class="pic"><img src="assets/aes-lash.jpg" alt=""><span class="tag">Aesthetics</span></div>
+          <span class="meta">PDF guide · 12 pages</span>
+          <h3>Aesthetic Services Guide: nine treatments for skin, face, hair and body</h3>
+          <span class="more">Open guide ↗</span>
+        </a>
+        <a class="guide" href="assets/guides/Violets_Occupational_Health_Brochure_A4_DIGITAL.pdf" target="_blank" rel="noopener">
+          <div class="pic"><img src="assets/oh-bp.jpg" alt=""><span class="tag">Occupational health</span></div>
+          <span class="meta">PDF guide · 16 pages</span>
+          <h3>Occupational Health and Wellness Services: ten services for employers</h3>
+          <span class="more">Open guide ↗</span>
+        </a>
+        <a class="guide" href="#clinics">
+          <div class="pic"><img src="assets/oh-clinic.jpg" alt=""><span class="tag">Clinics</span></div>
+          <span class="meta">Weekly timetable</span>
+          <h3>Specialist clinic days and start times</h3>
+          <span class="more">See timetable ↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <div class="foot-top">
+      <img src="assets/logo-white.png" alt="Violet's Medical Centre">
+      <p>Open 24 hours, every day</p>
+    </div>
+    <div class="foot-grid">
+      <div>
+        <h4>Follow us</h4>
+        <div class="socials">
+          <div><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8.5c0-.3.2-.5.5-.5z"/></svg><span>Facebook and TikTok: Violet's Medical Center</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg><span>Instagram and X: Violetsmedical</span></div>
+        </div>
+      </div>
+      <div>
+        <h4>Contact us</h4>
+        <dl>
+          <div><dt>Visit:</dt> <dd>Musuku, Kwabenya, Greater Accra, Ghana</dd></div>
+          <div><dt>Email:</dt> <dd>info@violetsmedical.com</dd></div>
+          <div><dt>Hours:</dt> <dd>Open 24 hours. Specialist clinics by timetable</dd></div>
+        </dl>
+        <a class="big-phone" href="https://wa.me/233540599383" target="_blank" rel="noopener"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/></svg>054 059 9383</a>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#clinics">Specialist clinics</a></li>
+          <li><a href="#services">Aesthetics</a></li>
+          <li><a href="#services">Occupational health</a></li>
+          <li><a href="#services">Workplace wellness</a></li>
+          <li><a href="#insurance">Insurance we accept</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Violet's Medical Centre. All rights reserved.</span>
+      <span>Musuku, Kwabenya, Greater Accra</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b=document.getElementById('burger'),m=document.getElementById('menu');
+  b.addEventListener('click',function(){var o=m.classList.toggle('show');b.setAttribute('aria-expanded',o)});
+  m.addEventListener('click',function(e){if(e.target.tagName==='A'){m.classList.remove('show');b.setAttribute('aria-expanded',false)}});
+  var s=document.getElementById('strip');
+  function step(d){s.scrollBy({left:d*(s.clientWidth*0.8),behavior:'smooth'})}
+  document.getElementById('prev').addEventListener('click',function(){step(-1)});
+  document.getElementById('next').addEventListener('click',function(){step(1)});
+  var rows=document.querySelectorAll('.svc');
+  rows.forEach(function(r){r.addEventListener('mouseenter',function(){rows.forEach(function(x){x.classList.remove('open')});r.classList.add('open')})});
+})();
+</script>
+</body>
+</html>

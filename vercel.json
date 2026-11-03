@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/violet-website/index.html" },
+    { "source": "/:path*", "destination": "/violet-website/:path*" }
+  ]
+}
